@@ -12,7 +12,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs'
+        'git_repo': 'https://github.com/wangguanzzz/turtoise.git',
+        'git_dict': 'test_dict'
     }
     QuicktestCrew().crew().kickoff(inputs=inputs)
 
@@ -22,7 +23,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": "AI LLMs"
+        "topic": ""
     }
     try:
         QuicktestCrew().crew().train(n_iterations=int(sys.argv[1]), inputs=inputs)

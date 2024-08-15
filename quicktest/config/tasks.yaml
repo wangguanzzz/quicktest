@@ -1,15 +1,17 @@
-research_task:
+git_clone_repo:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
+    Git clone the repo {git_repo}
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-
-reporting_task:
+    Get github repo cloned in directory {git_dict}
+get_fininal_report:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    得到股票英伟达 2023年的每日收盘价.
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
+    Get the required report , convert into csv file.
+  output_file:
+    result.csv
+financial_analyze:
+  description: >
+    分析AZUL,JBLU,SNCY,AAL的季度财务报告,比较他们的盈利和财务成本。注意AZUL的财报单位是巴西雷亚尔
+  expected_output: >
+    请详细评估一下 AZUL的负债情况 
