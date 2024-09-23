@@ -1,8 +1,9 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import (
-    CodeInterpreterTool
-#     DirectoryReadTool,
+    CodeInterpreterTool,
+    FileReadTool,
+    DirectoryReadTool,
 #     FileReadTool,
 #     SerperDevTool,
 #     WebsiteSearchTool
@@ -10,7 +11,7 @@ from crewai_tools import (
 # from quicktest.tools.custom_tool import MyCustomTool
 # Uncomment the following line to use an example of a custom tool
 from quicktest.tools.quaterly_report import QreportTool
-
+from quicktest.tools.beatifulsoup_tool import BSTool
 # Check our tools documentations for more information on how to use them
 # from crewai_tools import SerperDevTool
 
@@ -37,7 +38,23 @@ class QuicktestCrew():
             max_rpm=500,
             # allow_code_execution=True
         )
-
+    
+    def info_analyst(self) -> Agent:
+        return Agent(
+            config=self.agents_config['info_analyst'],
+            tools=[FileReadTool()],
+            verbose=True,
+            max_rpm=500
+        )
+    
+    
+    def code_analyst(self) -> Agent:
+         return Agent(
+            config=self.agents_config['code_analyst'],
+            tools=[FileReadTool(), DirectoryReadTool()],
+            verbose=True,
+            max_rpm=500
+        )       
 
     @task
     def financial_analyze(self) -> Task:
@@ -46,6 +63,17 @@ class QuicktestCrew():
             agent=self.financial_analyst()
         )
     
+    def github_analyze(self) -> Task:
+        return Task(
+            config=self.tasks_config['github_analyze'],
+            agent=self.code_analyst()
+        )
+        
+    def summerize_article(self) -> Task:
+        return Task(
+        config=self.tasks_config['summerize_article'],
+        agent=self.info_analyst()
+    )
 
 
     @crew

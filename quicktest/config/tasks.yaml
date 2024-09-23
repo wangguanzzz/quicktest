@@ -12,6 +12,18 @@ get_fininal_report:
     result.csv
 financial_analyze:
   description: >
-    分析AZUL,JBLU,SNCY,AAL的季度财务报告,比较他们的盈利和财务成本。注意AZUL的财报单位是巴西雷亚尔
+    分析一下各个游轮股票的季报,比较一下负债情况。分析一下投资价值
   expected_output: >
-    请详细评估一下 AZUL的负债情况 
+    中文报告
+summerize_article:
+  description: >
+    请得到下面的路径的文本，进行总结
+    /home/chriswang/Documents/test
+  expected_output: >
+    一个少于300字的总结
+github_analyze:
+  description: >
+    读取下面的directory, 分析里么的代码结构.然后读取里面的每个文件以及子文件夹里面的每个文件。给出阅读代码的详细指导报告。请忽略.git 文件夹。
+    /home/chriswang/Desktop/cucumber-ruby
+  expected_output: >
+    详细的阅读代码的指导中文报告。

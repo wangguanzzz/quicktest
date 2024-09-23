@@ -11,6 +11,8 @@ httpx = "^0.27.0"
 socksio = "^1.0.0"
 yfinance = "^0.2.41"
 pandas = "^2.2.2"
+beautifulsoup4 = "^4.12.3"
+browserbase = "^0.3.0"
 
 [tool.poetry.scripts]
 quicktest = "quicktest.main:run"
